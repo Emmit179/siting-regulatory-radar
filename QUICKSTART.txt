@@ -1,0 +1,12 @@
+TEXAS COUNTY REGULATORY RADAR — WINDOWS QUICK START
+
+1. Install Python 3.11, 3.12, or 3.13 and select “Add python.exe to PATH.”
+2. Unzip this folder somewhere writable, such as Documents.
+3. Double-click setup.bat.
+4. Open .env in Notepad and paste at least one API key after GROQ_API_KEY=,
+   GEMINI_API_KEY=, or OPENROUTER_API_KEY=. No key is required for local-rule mode.
+5. Double-click update-now.bat.
+6. Double-click start-dashboard.bat.
+
+The local dashboard opens at http://127.0.0.1:8765/.
+For free GitHub Pages deployment and daily updates, follow README.md.

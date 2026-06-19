@@ -1,0 +1,94 @@
+name: Daily update and deploy
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 3 * * *'
+      timezone: 'America/Chicago'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+env:
+  PYTHONUNBUFFERED: '1'
+  COUNTYWATCH_CONTACT_EMAIL: ${{ vars.COUNTYWATCH_CONTACT_EMAIL }}
+  COUNTYWATCH_LLM_MAX_CALLS_PER_RUN: ${{ vars.COUNTYWATCH_LLM_MAX_CALLS_PER_RUN || '450' }}
+  COUNTYWATCH_MAX_RUN_MINUTES: ${{ vars.COUNTYWATCH_MAX_RUN_MINUTES || '300' }}
+  GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+  GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+  OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+  COUNTYWATCH_ALLOW_INSECURE_TLS: 'false'
+
+concurrency:
+  group: countywatch-pages
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - name: Install system OCR
+        run: sudo apt-get update && sudo apt-get install -y tesseract-ocr
+
+      - name: Install application
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev]"
+          python -m playwright install --with-deps chromium
+
+      - name: Validate application before crawling
+        run: |
+          ruff check .
+          python -m pytest -q
+
+      - name: Restore durable crawler state
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p var
+          gh release download countywatch-state --pattern countywatch-state.sqlite3.gz --output var/countywatch-state.sqlite3.gz
+          python -m countywatch state-unpack var/countywatch-state.sqlite3.gz
+
+      - name: Incremental county update
+        run: python -m countywatch update
+
+      - name: Save durable crawler state
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python -m countywatch state-pack var/countywatch-state.sqlite3.gz
+          if gh release view countywatch-state >/dev/null 2>&1; then
+            gh release upload countywatch-state var/countywatch-state.sqlite3.gz --clobber
+          else
+            gh release create countywatch-state var/countywatch-state.sqlite3.gz \
+              --title "CountyWatch crawler state" \
+              --notes "Machine-managed incremental state. Do not edit manually."
+          fi
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload static dashboard
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,131 @@
+TEXAS COUNTY REGULATORY RADAR — DEEP INTELLIGENCE UPGRADE
+============================================================
+
+WHAT THIS CHANGES
+-----------------
+This upgrade keeps your existing statewide crawl, downloaded files, OCR, and extracted text.
+It replaces the current rules-heavy signal layer with a checkpointed, evidence-first ensemble review.
+It does not re-download or re-OCR the 120,000 pages you already processed.
+
+MODEL FLOW
+----------
+For every candidate document:
+
+1. GPT-OSS-120B performs the primary reading.
+2. GPT-OSS-120B performs a separately prompted skeptical reading.
+3. When either GPT reading finds a possible material event, Gemini 3.1 Flash-Lite performs a
+   diversity review if GEMINI_API_KEY is configured.
+4. GPT-OSS-120B re-reads the source evidence and makes the final document decision.
+5. GPT-OSS-120B consolidates agenda/packet/minutes/public-notice duplicates into county events.
+
+GPT-OSS-120B is therefore the primary analyst, skeptical auditor, final adjudicator, and county-level
+consolidator. Gemini never controls the final label or score.
+
+HARD QUALITY CONTROLS
+---------------------
+- One exact, continuous official-record quote must contain both the target facility and the material action.
+- Nearby unrelated terms cannot be stitched together into a signal.
+- Solar radar/speed signs, solar lights, SaaS/cloud hosting, NOAA climatic data centers, museum windmills,
+  generic burn bans, generic subdivision rules, and similar keyword collisions are rejected.
+- Tax abatements, reinvestment zones, road-use agreements, development agreements, and project approvals
+  are classified as project facilitation unless the quote states a real restriction.
+- Citizen petitions, state-policy advocacy, local regulatory processes, project monitoring, existing rules,
+  and actual local restrictions are kept separate.
+- Agenda language does not prove adoption. Adoption, enforcement, staff direction, drafting, and outcomes
+  require explicit quoted language.
+- Duplicate records for one event are consolidated and do not multiply the county score.
+- The dashboard is not partially replaced. A new signal set goes live only after all document and county
+  checkpoints are complete.
+- A timestamped SQLite safety backup is created immediately before the atomic cutover.
+
+INSTALL ON WINDOWS
+------------------
+1. Let any currently running update finish. Close the updater window afterward.
+2. Extract the upgrade ZIP directly into the project folder that contains update-now.bat.
+3. When Windows asks whether to replace files, choose Replace the files in the destination.
+4. Open .env and confirm this line contains your Groq key:
+
+       GROQ_API_KEY=your_key_here
+
+5. For the independent diversity review, also add your Gemini key:
+
+       GEMINI_API_KEY=your_key_here
+
+   Gemini is optional. Without it, the two GPT readings and final GPT adjudication still run.
+6. Double-click:
+
+       deep-rebuild-intelligence.bat
+
+7. To watch progress in another window, double-click:
+
+       watch-deep-rebuild.bat
+
+   Press Ctrl+C to close only the watcher.
+
+QUOTA CHECKPOINTS
+-----------------
+The default per-run safety budgets are:
+
+    GPT-OSS-120B:             980 calls
+    Gemini 3.1 Flash-Lite:    480 calls
+
+Providers may enforce token limits before request-count limits. When any provider limit is reached, the
+script stops safely after saving every completed phase. Run deep-rebuild-intelligence.bat again after the
+provider quota resets. It resumes at the exact unfinished model phase; completed calls are not repeated.
+
+The first rebuild can span more than one daily quota window. The old dashboard remains intact until the
+new statewide review is complete.
+
+ERROR CHECKPOINTS
+-----------------
+A malformed response is retried up to three times. A record that still fails is quarantined rather than
+looped forever.
+
+Check the error count with check-deep-rebuild.bat. After fixing a key/provider issue, run:
+
+    retry-deep-errors.bat
+
+Then run deep-rebuild-intelligence.bat again.
+
+AFTER THE FIRST REBUILD
+-----------------------
+Open the dashboard with start-dashboard.bat. County drawers now include:
+
+- A validated county assessment
+- Regulatory-event type, stage, and outcome
+- Project name when supported
+- The primary exact quote
+- Corroborating agenda/minutes/packet/public-notice links
+- Scores that distinguish restriction from facilitation, advocacy, opposition, and monitoring
+
+For future manual updates, use update-now.bat. It now performs:
+
+    incremental crawl without the legacy LLM classifier
+    -> checkpointed deep review
+    -> atomic dashboard publication
+
+Use crawl-only.bat only when you intentionally want to refresh records without starting model review.
+
+GITHUB ACTIONS
+--------------
+The included daily workflow now:
+
+1. Restores the durable SQLite state.
+2. Runs the incremental crawl with the legacy LLM disabled.
+3. Resumes the deep review.
+4. Saves all deep-review checkpoints back into the durable state release.
+5. Deploys the last complete dashboard to GitHub Pages.
+
+Keep GROQ_API_KEY and GEMINI_API_KEY as GitHub Actions repository secrets. Commit and push the upgraded
+files, then run the workflow manually once from the Actions tab. Daily runs continue from checkpoints.
+
+OPTIONAL .ENV OVERRIDES
+-----------------------
+COUNTYWATCH_DEEP_GROQ_MODEL=openai/gpt-oss-120b
+COUNTYWATCH_DEEP_GEMINI_MODEL=gemini-3.1-flash-lite
+COUNTYWATCH_DEEP_MAX_GROQ_CALLS=980
+COUNTYWATCH_DEEP_MAX_GEMINI_CALLS=480
+COUNTYWATCH_DEEP_MAX_RUN_MINUTES=0
+
+Do not launch two deep-rebuild windows. A process lock prevents concurrent writers; use the watcher for
+progress instead.

@@ -1,0 +1,22 @@
+CHATGPT PRO BACKFILL BRIDGE — FILE MANIFEST
+===========================================
+
+ONE EXISTING FILE IS REPLACED
+-----------------------------
+src\countywatch\deep_rebuild.py
+  Reason: supersedes the uninstalled provider-stability hotfix and preserves accurate
+  OpenAI/local model labels for imported historical checkpoints during later daily cutovers.
+
+NEW FILES ARE ADDED
+-------------------
+src\countywatch\chatgpt_backfill.py
+1-prepare-chatgpt-document-batches.bat
+2-import-chatgpt-document-results.bat
+3-prepare-chatgpt-county-batches.bat
+4-import-and-publish-chatgpt-backfill.bat
+check-chatgpt-backfill.bat
+open-chatgpt-backfill-folder.bat
+CHATGPT-PRO-BACKFILL-README.txt
+CHATGPT-BACKFILL-MANIFEST.txt
+
+NO OTHER PROJECT FILE IS INCLUDED OR REPLACED.

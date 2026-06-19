@@ -1,0 +1,410 @@
+Metadata-Version: 2.4
+Name: texas-county-regulatory-radar
+Version: 1.0.0
+Summary: Auditable monitoring and regulatory-risk heatmap for Texas county agendas, minutes, ordinances, and public notices.
+Author: Texas County Regulatory Radar
+License: MIT
+Requires-Python: <3.14,>=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: beautifulsoup4<5,>=4.12.3
+Requires-Dist: dateparser<2,>=1.2.0
+Requires-Dist: httpx[http2]<1,>=0.27.2
+Requires-Dist: lxml<7,>=5.3.0
+Requires-Dist: orjson<4,>=3.10.7
+Requires-Dist: pydantic<3,>=2.9.0
+Requires-Dist: PyMuPDF<2,>=1.24.10
+Requires-Dist: python-docx<2,>=1.1.2
+Requires-Dist: python-dotenv<2,>=1.0.1
+Requires-Dist: python-dateutil<3,>=2.9.0.post0
+Requires-Dist: Pillow<13,>=10.4.0
+Requires-Dist: playwright<2,>=1.47.0
+Requires-Dist: pytesseract<1,>=0.3.13
+Requires-Dist: rapidfuzz<4,>=3.9.7
+Requires-Dist: rich<15,>=13.8.1
+Requires-Dist: tenacity<10,>=9.0.0
+Requires-Dist: typer<1,>=0.12.5
+Requires-Dist: youtube-transcript-api<2,>=1.2.2
+Provides-Extra: dev
+Requires-Dist: pytest<10,>=8.3.3; extra == "dev"
+Requires-Dist: pytest-asyncio<2,>=0.24.0; extra == "dev"
+Requires-Dist: ruff<1,>=0.6.8; extra == "dev"
+Dynamic: license-file
+
+# Texas County Regulatory Radar
+
+A complete, auditable monitoring system for early regulatory indicators in Texas county public records. It discovers official county meeting sources, incrementally collects agendas/minutes/packets/notices/ordinances, extracts text and OCR, routes only relevant passages through free-tier LLMs, validates every signal against an exact source quote, scores county risk, and publishes a polished clickable heatmap.
+
+The product language deliberately says **early indicator**, not “secret plan.” A public agenda item can precede news coverage, but the record does not prove hidden intent or legal authority.
+
+## What is included
+
+- Registry and map for all **254 Texas counties**
+- Official-site resolution through Texas Counties Deliver
+- Respectful `robots.txt`-aware crawler with per-host pacing
+- Sitemap, homepage, common-path, and linked-vendor source discovery
+- Generic plus platform-aware collection for CivicPlus AgendaCenter, Legistar/Granicus, CivicClerk, PrimeGov, CivicWeb, BoardDocs, IQM2, Swagit, Municode, YouTube, and ordinary county sites
+- PDF, scanned-PDF OCR, HTML, DOCX, RTF, text/CSV, image, and YouTube-caption extraction
+- Immutable document revisions and content-addressed local storage
+- Conditional requests (`ETag`/`Last-Modified`) and three layers of deduplication
+- Weighted high-recall passage retrieval for solar, data centers, BESS, wind, and land-use controls
+- Groq → Gemini → OpenRouter free-provider routing with automatic fallback
+- Optional second-model verification for drafting/moratorium/high-stage signals
+- Conservative exact-quote local rules fallback when model keys or free quotas are unavailable
+- Evidence validation that rejects model quotes not found in the official source text
+- Transparent county risk, sentiment, confidence, coverage, source health, and daily trend history
+- Dependency-free responsive dashboard with map, search, filters, evidence drawer, source audit, ranking table, and CSV exports
+- Daily GitHub Actions update at **3:17 a.m. America/Chicago** and free GitHub Pages deployment
+- Durable incremental SQLite state between GitHub Actions runs
+- Unit/integration tests and Windows one-click scripts
+
+No sample accusations or invented regulatory signals are preloaded. Before the first crawl, every county correctly appears as coverage unknown.
+
+---
+
+## Windows setup
+
+### 1. Install Python once
+
+Install **Python 3.11, 3.12, or 3.13** from <https://www.python.org/downloads/windows/>. During installation, check **Add python.exe to PATH**.
+
+### 2. Unzip this project
+
+Use a normal writable folder, for example:
+
+```text
+C:\Users\YourName\Documents\texas-county-regulatory-radar
+```
+
+Avoid `Program Files` and OneDrive folders with restrictive corporate policies.
+
+### 3. Double-click `setup.bat`
+
+It automatically:
+
+1. creates an isolated `.venv`;
+2. installs the application and test dependencies;
+3. installs headless Chromium for JavaScript meeting portals;
+4. attempts to install Tesseract OCR through `winget` when absent;
+5. creates `.env` from `.env.example`;
+6. seeds all counties and generates a valid dashboard;
+7. runs a local readiness check.
+
+Tesseract is optional for ordinary text PDFs. It is required only for scanned/image records and is installed automatically in GitHub Actions.
+
+### 4. Add at least one free API key to `.env`
+
+Open `.env` in Notepad. The recommended first key is Groq:
+
+1. Create a key at <https://console.groq.com/keys>.
+2. Paste it after `GROQ_API_KEY=`.
+3. Save the file.
+
+Example:
+
+```dotenv
+GROQ_API_KEY=gsk_your_key_here
+GEMINI_API_KEY=
+OPENROUTER_API_KEY=
+```
+
+Optional fallbacks:
+
+- Gemini: <https://aistudio.google.com/app/apikey>
+- OpenRouter: <https://openrouter.ai/settings/keys>
+
+One key is sufficient. With multiple keys, a rate limit or provider outage falls through automatically. With no key, the system still runs using the conservative local rules engine.
+
+All monitored records are public, but review each provider's data-use terms. In particular, free API tiers can have different retention or product-improvement terms from paid tiers.
+
+### 5. Double-click `update-now.bat`
+
+The first run resolves official sites, discovers meeting sources, collects the configured lookback period, analyzes new versions, and writes dashboard data. Subsequent runs are incremental: unchanged revisions are not re-extracted or re-analyzed. A full statewide backfill can span more than one cloud run; time-deferred counties are automatically placed first the next morning.
+
+The crawler records access failures rather than hiding them. A county with weak source coverage stays gray.
+
+### 6. Double-click `start-dashboard.bat`
+
+Your browser opens:
+
+```text
+http://127.0.0.1:8765/
+```
+
+Do not double-click `site/index.html`; browser security blocks local JSON requests under `file://`.
+
+---
+
+## Put it live for free with GitHub
+
+The repository must be **public** for the simplest free Actions + Pages configuration.
+
+### Easiest publishing route: GitHub Desktop
+
+1. Install GitHub Desktop: <https://desktop.github.com/>.
+2. Open GitHub Desktop and sign in.
+3. Choose **File → Add local repository** and select the unzipped folder.
+4. When prompted that it is not a repository, choose **create a repository here**.
+5. Commit all files with the message `Initial Texas county radar`.
+6. Click **Publish repository**.
+7. Leave **Keep this code private** unchecked, then publish.
+
+### Command-line alternative
+
+Create a blank public repository on GitHub, then open PowerShell in this folder:
+
+```powershell
+git init
+git add .
+git commit -m "Initial Texas county radar"
+git branch -M main
+git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
+git push -u origin main
+```
+
+### Add model keys as GitHub Actions secrets
+
+In the GitHub repository:
+
+1. Open **Settings → Secrets and variables → Actions**.
+2. Under **Repository secrets**, add `GROQ_API_KEY`.
+3. Optionally add `GEMINI_API_KEY` and `OPENROUTER_API_KEY`.
+4. Under **Variables**, optionally add:
+   - `COUNTYWATCH_CONTACT_EMAIL` — a contact address included in the crawler user agent;
+   - `COUNTYWATCH_LLM_MAX_CALLS_PER_RUN` — default `450`;
+   - `COUNTYWATCH_MAX_RUN_MINUTES` — default `300`; deferred counties automatically lead the next run.
+
+Never commit `.env`; it is already ignored.
+
+### Enable Pages
+
+1. Open **Settings → Pages**.
+2. Under **Build and deployment → Source**, choose **GitHub Actions**.
+
+### Run the first cloud update
+
+1. Open **Actions → Daily update and deploy**.
+2. Click **Run workflow → Run workflow**.
+3. Open the workflow run to see crawl coverage and any source failures.
+4. The deployment URL appears in the deployment step and in **Settings → Pages**:
+
+```text
+https://YOUR_USERNAME.github.io/YOUR_REPOSITORY/
+```
+
+The workflow then runs every morning at 3:17 a.m. Central time with daylight-saving handling. The hosted run has a five-hour application budget so it can save state and deploy cleanly; any deferred counties rotate to the front of the next run.
+
+### How cloud state persists
+
+GitHub runners are temporary. After each update, the workflow compresses the SQLite database and replaces the asset in a machine-managed GitHub Release named `countywatch-state`. The next run restores it before crawling. Raw downloaded documents are not placed in the release; the database keeps URLs, hashes, extraction metadata, analyses, evidence, snapshots, and compressed text only for potentially relevant revisions so rule-only results can be upgraded later without redownloading.
+
+Because the simplest free deployment uses a public repository, that release asset is also public. It contains no API keys and is designed only for public-record monitoring; do not add confidential or authenticated sources without changing the state-storage design.
+
+In public repositories, GitHub can disable scheduled workflows after 60 days with no repository activity. A normal commit or manually re-enabling the workflow restores the schedule.
+
+---
+
+## Everyday operation
+
+Local full update:
+
+```powershell
+.venv\Scripts\python.exe -m countywatch update
+```
+
+One county only:
+
+```powershell
+.venv\Scripts\python.exe -m countywatch update --county "Ellis"
+```
+
+Re-run source discovery after a county redesigns its site:
+
+```powershell
+.venv\Scripts\python.exe -m countywatch update --county "Ellis" --force-discovery
+```
+
+Inspect one county's source health and signals:
+
+```powershell
+.venv\Scripts\python.exe -m countywatch inspect "Ellis"
+```
+
+Add/correct an official source without code changes:
+
+```powershell
+.venv\Scripts\python.exe -m countywatch add-source "Ellis" "https://www.elliscountytx.gov/AgendaCenter" --source-type agendas --title "Commissioners Court agendas"
+```
+
+Use local analysis only:
+
+```powershell
+.venv\Scripts\python.exe -m countywatch update --no-llm
+```
+
+Regenerate the static site from cached data:
+
+```powershell
+.venv\Scripts\python.exe -m countywatch export
+```
+
+Run tests:
+
+```powershell
+.venv\Scripts\python.exe -m pytest -q
+```
+
+Readiness check:
+
+```powershell
+.venv\Scripts\python.exe -m countywatch doctor
+```
+
+---
+
+## Efficiency and caching
+
+The system avoids repeated work at every stage:
+
+- Source listings and known documents use conditional HTTP headers.
+- A canonical document URL is stored once.
+- Raw bytes are keyed by SHA-256.
+- Extracted text is keyed by a separate SHA-256.
+- A revision is unique by document + raw hash + text hash.
+- Analysis is unique by revision + prompt version.
+- Only topic/regulatory passages go to the LLM.
+- Daily score decay is recomputed without calling a model.
+- The model call budget is configurable and provider limits automatically fall back.
+- Every discovered source listing is considered before the per-county document cap is applied.
+
+Changing the prompt version intentionally triggers fresh analysis for existing revisions; ordinary code or dashboard changes do not.
+
+---
+
+## How a signal is created
+
+1. A document must contain a topic near county-process or regulatory language.
+2. The classifier must produce the required structured fields.
+3. Its `evidence_quote` must map to an exact continuous span in the source extraction. Whitespace normalization is allowed; unsupported wording is rejected.
+4. High-stage or moratorium signals are sent to a verification pass when a model and call budget are available.
+5. The evidence span, provider/model, confidence, document revision, official URL, and meeting date are retained.
+
+The local fallback has a lower confidence ceiling and is labeled in the dashboard.
+
+---
+
+## Risk and sentiment
+
+Risk is a **0–100 research-priority index**, not a probability. Procedural stage contributes the most. Moratoria/prohibitions and explicit county action add weight; supportive incentives reduce restriction risk. Confidence and recency modify the result. Adopted/enforced actions decay slowly; preliminary discussion decays faster; rescinded actions decay quickly.
+
+County risk combines a bounded set of active signals without simply summing them. The strongest supported signal remains intuitive, while independent corroborating indicators can raise the aggregate modestly.
+
+Sentiment runs from supportive (negative) to restrictive (positive). It is descriptive of the cited record, not the population of the county.
+
+See [ARCHITECTURE.md](ARCHITECTURE.md) for exact stage weights and data flow.
+
+---
+
+## Coverage is separate from risk
+
+A missing signal can mean either:
+
+- monitored records currently contain no relevant indicator; or
+- records were not discoverable, not published, blocked, scanned poorly, or temporarily unavailable.
+
+The dashboard therefore shows a separate coverage score. Below the coverage threshold with no signal is **Coverage unknown**, never low risk.
+
+The crawler monitors all 254 county identities, but no software can guarantee that every county publishes every meeting record electronically or that every third-party portal remains machine-readable. The source audit exposes unresolved sites, repeated failures, and document extraction errors. Manual source correction is built in.
+
+---
+
+## Source behavior and responsible crawling
+
+- `robots.txt` is checked before ordinary and browser retrieval.
+- Each host is paced independently; default delay is 1.2 seconds.
+- Global concurrency defaults to eight.
+- Authentication and access controls are never bypassed.
+- TLS certificates are verified strictly by default. Insecure TLS is used only when you explicitly set `COUNTYWATCH_ALLOW_INSECURE_TLS=true` for a known source, and failures remain visible in source health.
+- Downloads are capped by size.
+- Browser automation is used only as a fallback for linked JavaScript portals.
+- Failures are logged and surfaced as coverage degradation.
+
+Set `COUNTYWATCH_CONTACT_EMAIL` in `.env` or GitHub Actions variables before broad public operation.
+
+---
+
+## Configuration reference
+
+The commented `.env.example` contains all normal settings. The most useful controls are:
+
+```dotenv
+COUNTYWATCH_CONCURRENCY=8
+COUNTYWATCH_HOST_DELAY_SECONDS=1.2
+COUNTYWATCH_INITIAL_LOOKBACK_DAYS=730
+COUNTYWATCH_MAX_DOCUMENTS_PER_SOURCE=80
+COUNTYWATCH_MAX_DOCUMENTS_PER_COUNTY=160
+COUNTYWATCH_LLM_MAX_CALLS_PER_RUN=450
+# 0 means unlimited locally; the hosted workflow uses 300 minutes.
+COUNTYWATCH_MAX_RUN_MINUTES=0
+COUNTYWATCH_VERIFY_HIGH_RISK=true
+COUNTYWATCH_OCR=true
+COUNTYWATCH_BROWSER_FALLBACK=true
+COUNTYWATCH_ALLOW_INSECURE_TLS=false
+```
+
+For a lower free-model quota, reduce `COUNTYWATCH_LLM_MAX_CALLS_PER_RUN`. Relevant revisions receive an immediate, conservative local-rules result when free model capacity is unavailable; their compressed text is retained and the result can be upgraded by an LLM in a later run.
+
+---
+
+## Troubleshooting
+
+### `setup.bat` says Python was not found
+
+Install Python 3.11, 3.12, or 3.13 and select **Add python.exe to PATH**, then reopen the folder and rerun setup.
+
+### Playwright browser missing
+
+```powershell
+.venv\Scripts\python.exe -m playwright install chromium
+```
+
+### Scanned PDFs have no text
+
+Run `countywatch doctor`. Install Tesseract through Windows Package Manager:
+
+```powershell
+winget install --id tesseract-ocr.tesseract -e
+```
+
+Then open a new terminal.
+
+### A county has the wrong or missing source
+
+Run forced discovery, inspect source health, then use `add-source` with the official URL. Manual sources receive top priority and survive future discovery runs.
+
+### Free model rate limit
+
+Add another provider key or lower the per-run budget. Already completed analyses are cached; the system does not start over.
+
+### GitHub Pages is blank
+
+Confirm **Settings → Pages → Source → GitHub Actions**, then rerun **Daily update and deploy**. The workflow publishes the `site/` folder, not the repository root.
+
+### Scheduled action stopped
+
+Open **Actions**, enable the workflow, and make a small repository commit if the repository has been inactive for 60 days.
+
+---
+
+## Data and legal caveats
+
+- The dashboard is research tooling, not legal advice.
+- A county record mentioning a restriction does not establish that it was adopted.
+- Adoption does not itself establish enforceability or statutory authority.
+- Citizen comments are distinguished from county action where the source allows it.
+- OCR and meeting captions can contain errors; the official linked record controls.
+- Scores prioritize review and should not be presented as definitive statements of county intent.
+
+## License
+
+MIT. County records remain subject to their source terms and applicable public-records law. Bundled county geometry is derived from U.S. Census county boundary data distributed with the Python Basemap data package; the dashboard includes attribution in its methodology and this repository.

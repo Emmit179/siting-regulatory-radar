@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "texas-county-regulatory-radar"
+version = "1.0.0"
+description = "Auditable monitoring and regulatory-risk heatmap for Texas county agendas, minutes, ordinances, and public notices."
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+license = {text = "MIT"}
+authors = [{name = "Texas County Regulatory Radar"}]
+dependencies = [
+  "beautifulsoup4>=4.12.3,<5",
+  "dateparser>=1.2.0,<2",
+  "httpx[http2]>=0.27.2,<1",
+  "lxml>=5.3.0,<7",
+  "orjson>=3.10.7,<4",
+  "pydantic>=2.9.0,<3",
+  "PyMuPDF>=1.24.10,<2",
+  "python-docx>=1.1.2,<2",
+  "python-dotenv>=1.0.1,<2",
+  "python-dateutil>=2.9.0.post0,<3",
+  "Pillow>=10.4.0,<13",
+  "playwright>=1.47.0,<2",
+  "pytesseract>=0.3.13,<1",
+  "rapidfuzz>=3.9.7,<4",
+  "rich>=13.8.1,<15",
+  "tenacity>=9.0.0,<10",
+  "typer>=0.12.5,<1",
+  "youtube-transcript-api>=1.2.2,<2"
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.3.3,<10", "pytest-asyncio>=0.24.0,<2", "ruff>=0.6.8,<1"]
+
+[project.scripts]
+countywatch = "countywatch.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+countywatch = ["data/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"

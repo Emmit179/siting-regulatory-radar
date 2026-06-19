@@ -1,0 +1,28 @@
+TEXAS COUNTY REGULATORY RADAR
+UNATTENDED RATE-LIMIT HOTFIX
+
+WHAT THIS FIXES
+- Groq and Gemini HTTP 429 responses no longer end a local deep rebuild.
+- The program reads the provider retry delay, adds a safety buffer, waits, and retries the exact same checkpointed phase.
+- Long daily-reset waits are supported. A heartbeat is printed every five minutes.
+- Temporary network errors and provider HTTP 5xx responses receive extended automatic retries.
+- Windows sleep is suppressed while the unattended deep-rebuild process is open. The display may turn off normally.
+- Artificial per-process call caps are disabled only by the local batch files; provider-side quotas still control usage.
+- GitHub Actions remains checkpoint-and-exit so it does not waste hosted-runner time sleeping through daily resets.
+
+INSTALL
+1. Let the old deep-rebuild window finish at its "Press any key" prompt, then press a key to close it.
+2. Extract this ZIP directly into the project folder that contains update-now.bat.
+3. Choose "Replace the files in the destination" when Windows asks.
+4. Do not delete the database and do not run retry-deep-errors.bat. The current pending-audit checkpoint is healthy.
+5. Double-click deep-rebuild-intelligence.bat.
+6. Optionally open watch-deep-rebuild.bat in a second window.
+
+WHAT YOU SHOULD SEE
+- The queue will resume with one document at Pending Audit and the remaining documents at Pending Primary.
+- When a rolling limit is reached, the same window prints a wait duration and resumes automatically.
+- Closing the console or pressing Ctrl+C intentionally stops the run; all completed phases remain checkpointed.
+- The existing dashboard is not partially replaced. Atomic publication occurs only after all document and county checkpoints finish.
+
+IMPORTANT
+The computer must remain powered and connected to the internet. Windows sleep is suppressed by the process, but closing a laptop lid can still force sleep depending on the laptop's power settings.

@@ -1,0 +1,20 @@
+Texas County Regulatory Radar - deterministic final cleanup
+
+Files added by this ZIP:
+  src\countywatch\final_cleanup.py
+  apply-final-cleanup-patch.py
+  apply-final-cleanup-patch.bat
+  final-cleanup-and-republish.bat
+  FINAL-CLEANUP-MANIFEST.txt
+  FINAL-CLEANUP-README.txt
+
+Existing files replaced by extraction: none.
+
+When apply-final-cleanup-patch.bat is run, it makes one surgical insertion into:
+  src\countywatch\deep_rebuild.py
+
+It first saves:
+  src\countywatch\deep_rebuild.py.before-final-cleanup
+
+It does not modify app.js, styles.css, exporter.py, scoring.py, crawler files,
+GitHub Actions, the SQLite database, cached documents, or extracted text.

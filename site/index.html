@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Auditable early-warning heatmap for Texas county solar, data-center, battery-storage, and land-use regulation.">
+  <meta name="theme-color" content="#132521">
+  <title>Texas County Regulatory Radar</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to dashboard</a>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Texas County Regulatory Radar home">
+      <img class="brand-mark" src="favicon-512.png" alt="" aria-hidden="true">
+      <span><strong>Siting Regulatory Radar</strong></span>
+    </a>
+    <nav class="top-actions" aria-label="Dashboard actions">
+      <span class="freshness"><i></i><span id="freshness-text">Loading data…</span></span>
+      <a class="button ghost" href="exports/county-risk.csv" download>Export CSV</a>
+      <!-- <button class="button ghost" id="methodology-button" type="button">Methodology</button> -->
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- <section class="hero shell">
+      <div class="eyebrow">Texas · 254 counties · official public records</div>
+      <div class="hero-grid">
+        <div>
+          <h1>See regulatory pressure<br><em>before it becomes a headline.</em></h1>
+          <p class="hero-copy">Agendas, minutes, packets, ordinances, and public notices are screened for grounded early indicators affecting utility-scale solar, data centers, battery storage, and related land-use controls.</p>
+        </div>
+        <div class="hero-note">
+          <span class="note-icon" aria-hidden="true">↗</span>
+          <p><strong>Evidence first.</strong> Every scored signal links to the official record and preserves an exact supporting quote. Unverified coverage is gray—not “safe.”</p>
+        </div>
+      </div>
+      <div class="metrics" aria-label="Dashboard summary">
+        <article><span class="metric-label">High / critical</span><strong id="metric-high">—</strong><small>counties requiring review</small></article>
+        <article><span class="metric-label">Active indicators</span><strong id="metric-signals">—</strong><small>evidence-backed signals</small></article>
+        <article><span class="metric-label">Source coverage</span><strong id="metric-coverage">—</strong><small>counties recently monitored</small></article>
+        <article><span class="metric-label">Records indexed</span><strong id="metric-documents">—</strong><small>deduplicated documents</small></article>
+      </div>
+    </section> -->
+
+    <section class="dashboard shell" aria-label="Regulatory risk dashboard">
+      <div class="control-row">
+        <div class="topic-switcher" role="group" aria-label="Map topic">
+          <button class="topic active" data-topic="risk" type="button" aria-pressed="true">Overall</button>
+          <button class="topic" data-topic="solar" type="button" aria-pressed="false">Solar</button>
+          <button class="topic" data-topic="dataCenter" type="button" aria-pressed="false">Data centers</button>
+          <button class="topic" data-topic="bess" type="button" aria-pressed="false">Battery storage</button>
+          <button class="topic" data-topic="wind" type="button" aria-pressed="false">Wind</button>
+        </div>
+        <div class="search-wrap">
+          <label class="sr-only" for="county-search">Find a county</label>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+          <input id="county-search" type="search" autocomplete="off" placeholder="Find a county…">
+          <div class="search-results" id="search-results" hidden></div>
+        </div>
+      </div>
+
+      <div class="primary-grid">
+        <article class="panel map-panel">
+          <div class="panel-heading">
+            <div><span class="kicker">County heatmap</span><h2 id="map-title">Overall regulatory risk</h2></div>
+            <div class="map-tools" aria-label="Map controls">
+              <button type="button" id="zoom-out" aria-label="Zoom out">−</button>
+              <button type="button" id="zoom-reset" aria-label="Reset map">Reset</button>
+              <button type="button" id="zoom-in" aria-label="Zoom in">+</button>
+            </div>
+          </div>
+          <div class="map-stage" id="map-stage">
+            <svg id="texas-map" role="img" aria-labelledby="map-title map-description"></svg>
+            <p id="map-description" class="sr-only">Interactive Texas county map colored by regulatory risk. Select a county for supporting records.</p>
+            <div class="map-tooltip" id="map-tooltip" role="status" hidden></div>
+            <div class="map-loading" id="map-loading"><span></span>Building county view…</div>
+          </div>
+          <div class="legend" aria-label="Risk legend">
+            <span><i class="legend-unknown"></i>Coverage unknown</span>
+            <span><i class="legend-clear"></i>No current signal</span>
+            <span><i class="legend-watch"></i>Watch</span>
+            <span><i class="legend-elevated"></i>Elevated</span>
+            <span><i class="legend-high"></i>High</span>
+            <span><i class="legend-critical"></i>Critical</span>
+          </div>
+          <div class="map-footnote"><span id="map-summary">—</span><button id="coverage-button" type="button">View coverage audit →</button></div>
+        </article>
+
+        <aside class="panel feed-panel" aria-labelledby="feed-title">
+          <div class="panel-heading feed-heading">
+            <div><span class="kicker">Latest documents</span><h2 id="feed-title">Recent feed</h2></div>
+            <select id="feed-topic" aria-label="Filter signal feed by topic">
+              <option value="all">All topics</option>
+              <option value="solar">Solar</option>
+              <option value="data_center">Data centers</option>
+              <option value="bess">Battery storage</option>
+              <option value="wind">Wind</option>
+            </select>
+          </div>
+          <div class="signal-feed" id="signal-feed"></div>
+          <div class="feed-footer"><a href="exports/signals.csv" download>Download full ledger <span>↗</span></a></div>
+        </aside>
+      </div>
+
+      <article class="panel ranking-panel">
+        <div class="panel-heading ranking-heading">
+          <div><span class="kicker">Prioritized review</span><h2>County breakdown</h2></div>
+          <div class="table-controls">
+            <label>Show
+              <select id="status-filter">
+                <option value="all">All counties</option>
+                <option value="actionable">Elevated and above</option>
+                <option value="unknown">Coverage unknown</option>
+                <option value="signals">Any active signal</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>County</th><th>Status</th><th>Overall</th><th>Solar</th><th>Data center</th><th>BESS</th><th>Coverage</th><th>Latest activity</th><th></th></tr></thead>
+            <tbody id="county-table"></tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer shell">
+    <p>Research triage from official public records: not legal advice, proof of intent, or a determination of county authority.</p>
+    <!-- <p>Open-source · Evidence-linked · <span id="footer-date">—</span></p> -->
+  </footer>
+
+  <div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+  <aside class="county-drawer" id="county-drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title" aria-hidden="true" inert>
+    <button class="drawer-close" id="drawer-close" type="button" aria-label="Close county details">×</button>
+    <div id="drawer-content"></div>
+  </aside>
+
+  <dialog class="modal" id="methodology-modal">
+    <button class="modal-close" data-close-dialog type="button" aria-label="Close">×</button>
+    <span class="kicker">How the radar works</span>
+    <h2>Grounded signals, transparent uncertainty.</h2>
+    <div class="method-grid">
+      <section><b>01</b><h3>Discover</h3><p>Official county sites and linked meeting platforms are resolved, then monitored for agendas, minutes, packets, ordinances, notices, and transcripts.</p></section>
+      <section><b>02</b><h3>Extract</h3><p>Documents are content-hashed, versioned, and converted to text. Scanned PDFs use OCR. Unchanged records are never reprocessed.</p></section>
+      <section><b>03</b><h3>Ground</h3><p>A high-recall local filter finds regulatory passages. Free LLMs classify only those excerpts; every result must map back to an exact source quote.</p></section>
+      <section><b>04</b><h3>Score</h3><p>Risk reflects posture, procedural stage, mechanism, confidence, and recency. Adoption/enforcement persists longer; rescinded actions decay quickly.</p></section>
+    </div>
+    <div class="method-callout"><strong>What “risk” means here</strong><p>A prioritized research signal that official records merit review. It is not a prediction, legal conclusion, or assertion of secret conduct.</p></div>
+  </dialog>
+
+  <dialog class="modal coverage-modal" id="coverage-modal">
+    <button class="modal-close" data-close-dialog type="button" aria-label="Close">×</button>
+    <span class="kicker">Monitoring integrity</span>
+    <h2>County coverage audit</h2>
+    <p class="modal-intro">Coverage measures whether the official site was resolved, substantive sources were discovered, sources recently responded, and documents were successfully extracted.</p>
+    <div class="coverage-summary" id="coverage-summary"></div>
+    <div class="coverage-list" id="coverage-list"></div>
+  </dialog>
+
+  <noscript><div class="noscript">This dashboard requires JavaScript to render the county map and evidence ledger.</div></noscript>
+  <script src="app.js" defer></script>
+</body>
+</html>

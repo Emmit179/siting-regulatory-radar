@@ -1,0 +1,4 @@
+CountyWatch deep intelligence upgrade v2.2.0
+
+Overlay these files onto the existing Texas County Regulatory Radar project root.
+No .env file, API key, SQLite database, cached document, or extracted text is included or replaced.

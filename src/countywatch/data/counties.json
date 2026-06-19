@@ -1,0 +1,1526 @@
+[
+  {
+    "fips": "48001",
+    "name": "Anderson",
+    "slug": "anderson",
+    "directory_url": "https://texascountiesdeliver.org/county/anderson/"
+  },
+  {
+    "fips": "48003",
+    "name": "Andrews",
+    "slug": "andrews",
+    "directory_url": "https://texascountiesdeliver.org/county/andrews/"
+  },
+  {
+    "fips": "48005",
+    "name": "Angelina",
+    "slug": "angelina",
+    "directory_url": "https://texascountiesdeliver.org/county/angelina/"
+  },
+  {
+    "fips": "48007",
+    "name": "Aransas",
+    "slug": "aransas",
+    "directory_url": "https://texascountiesdeliver.org/county/aransas/"
+  },
+  {
+    "fips": "48009",
+    "name": "Archer",
+    "slug": "archer",
+    "directory_url": "https://texascountiesdeliver.org/county/archer/"
+  },
+  {
+    "fips": "48011",
+    "name": "Armstrong",
+    "slug": "armstrong",
+    "directory_url": "https://texascountiesdeliver.org/county/armstrong/"
+  },
+  {
+    "fips": "48013",
+    "name": "Atascosa",
+    "slug": "atascosa",
+    "directory_url": "https://texascountiesdeliver.org/county/atascosa/"
+  },
+  {
+    "fips": "48015",
+    "name": "Austin",
+    "slug": "austin",
+    "directory_url": "https://texascountiesdeliver.org/county/austin/"
+  },
+  {
+    "fips": "48017",
+    "name": "Bailey",
+    "slug": "bailey",
+    "directory_url": "https://texascountiesdeliver.org/county/bailey/"
+  },
+  {
+    "fips": "48019",
+    "name": "Bandera",
+    "slug": "bandera",
+    "directory_url": "https://texascountiesdeliver.org/county/bandera/"
+  },
+  {
+    "fips": "48021",
+    "name": "Bastrop",
+    "slug": "bastrop",
+    "directory_url": "https://texascountiesdeliver.org/county/bastrop/"
+  },
+  {
+    "fips": "48023",
+    "name": "Baylor",
+    "slug": "baylor",
+    "directory_url": "https://texascountiesdeliver.org/county/baylor/"
+  },
+  {
+    "fips": "48025",
+    "name": "Bee",
+    "slug": "bee",
+    "directory_url": "https://texascountiesdeliver.org/county/bee/"
+  },
+  {
+    "fips": "48027",
+    "name": "Bell",
+    "slug": "bell",
+    "directory_url": "https://texascountiesdeliver.org/county/bell/"
+  },
+  {
+    "fips": "48029",
+    "name": "Bexar",
+    "slug": "bexar",
+    "directory_url": "https://texascountiesdeliver.org/county/bexar/"
+  },
+  {
+    "fips": "48031",
+    "name": "Blanco",
+    "slug": "blanco",
+    "directory_url": "https://texascountiesdeliver.org/county/blanco/"
+  },
+  {
+    "fips": "48033",
+    "name": "Borden",
+    "slug": "borden",
+    "directory_url": "https://texascountiesdeliver.org/county/borden/"
+  },
+  {
+    "fips": "48035",
+    "name": "Bosque",
+    "slug": "bosque",
+    "directory_url": "https://texascountiesdeliver.org/county/bosque/"
+  },
+  {
+    "fips": "48037",
+    "name": "Bowie",
+    "slug": "bowie",
+    "directory_url": "https://texascountiesdeliver.org/county/bowie/"
+  },
+  {
+    "fips": "48039",
+    "name": "Brazoria",
+    "slug": "brazoria",
+    "directory_url": "https://texascountiesdeliver.org/county/brazoria/"
+  },
+  {
+    "fips": "48041",
+    "name": "Brazos",
+    "slug": "brazos",
+    "directory_url": "https://texascountiesdeliver.org/county/brazos/"
+  },
+  {
+    "fips": "48043",
+    "name": "Brewster",
+    "slug": "brewster",
+    "directory_url": "https://texascountiesdeliver.org/county/brewster/"
+  },
+  {
+    "fips": "48045",
+    "name": "Briscoe",
+    "slug": "briscoe",
+    "directory_url": "https://texascountiesdeliver.org/county/briscoe/"
+  },
+  {
+    "fips": "48047",
+    "name": "Brooks",
+    "slug": "brooks",
+    "directory_url": "https://texascountiesdeliver.org/county/brooks/"
+  },
+  {
+    "fips": "48049",
+    "name": "Brown",
+    "slug": "brown",
+    "directory_url": "https://texascountiesdeliver.org/county/brown/"
+  },
+  {
+    "fips": "48051",
+    "name": "Burleson",
+    "slug": "burleson",
+    "directory_url": "https://texascountiesdeliver.org/county/burleson/"
+  },
+  {
+    "fips": "48053",
+    "name": "Burnet",
+    "slug": "burnet",
+    "directory_url": "https://texascountiesdeliver.org/county/burnet/"
+  },
+  {
+    "fips": "48055",
+    "name": "Caldwell",
+    "slug": "caldwell",
+    "directory_url": "https://texascountiesdeliver.org/county/caldwell/"
+  },
+  {
+    "fips": "48057",
+    "name": "Calhoun",
+    "slug": "calhoun",
+    "directory_url": "https://texascountiesdeliver.org/county/calhoun/"
+  },
+  {
+    "fips": "48059",
+    "name": "Callahan",
+    "slug": "callahan",
+    "directory_url": "https://texascountiesdeliver.org/county/callahan/"
+  },
+  {
+    "fips": "48061",
+    "name": "Cameron",
+    "slug": "cameron",
+    "directory_url": "https://texascountiesdeliver.org/county/cameron/"
+  },
+  {
+    "fips": "48063",
+    "name": "Camp",
+    "slug": "camp",
+    "directory_url": "https://texascountiesdeliver.org/county/camp/"
+  },
+  {
+    "fips": "48065",
+    "name": "Carson",
+    "slug": "carson",
+    "directory_url": "https://texascountiesdeliver.org/county/carson/"
+  },
+  {
+    "fips": "48067",
+    "name": "Cass",
+    "slug": "cass",
+    "directory_url": "https://texascountiesdeliver.org/county/cass/"
+  },
+  {
+    "fips": "48069",
+    "name": "Castro",
+    "slug": "castro",
+    "directory_url": "https://texascountiesdeliver.org/county/castro/"
+  },
+  {
+    "fips": "48071",
+    "name": "Chambers",
+    "slug": "chambers",
+    "directory_url": "https://texascountiesdeliver.org/county/chambers/"
+  },
+  {
+    "fips": "48073",
+    "name": "Cherokee",
+    "slug": "cherokee",
+    "directory_url": "https://texascountiesdeliver.org/county/cherokee/"
+  },
+  {
+    "fips": "48075",
+    "name": "Childress",
+    "slug": "childress",
+    "directory_url": "https://texascountiesdeliver.org/county/childress/"
+  },
+  {
+    "fips": "48077",
+    "name": "Clay",
+    "slug": "clay",
+    "directory_url": "https://texascountiesdeliver.org/county/clay/"
+  },
+  {
+    "fips": "48079",
+    "name": "Cochran",
+    "slug": "cochran",
+    "directory_url": "https://texascountiesdeliver.org/county/cochran/"
+  },
+  {
+    "fips": "48081",
+    "name": "Coke",
+    "slug": "coke",
+    "directory_url": "https://texascountiesdeliver.org/county/coke/"
+  },
+  {
+    "fips": "48083",
+    "name": "Coleman",
+    "slug": "coleman",
+    "directory_url": "https://texascountiesdeliver.org/county/coleman/"
+  },
+  {
+    "fips": "48085",
+    "name": "Collin",
+    "slug": "collin",
+    "directory_url": "https://texascountiesdeliver.org/county/collin/"
+  },
+  {
+    "fips": "48087",
+    "name": "Collingsworth",
+    "slug": "collingsworth",
+    "directory_url": "https://texascountiesdeliver.org/county/collingsworth/"
+  },
+  {
+    "fips": "48089",
+    "name": "Colorado",
+    "slug": "colorado",
+    "directory_url": "https://texascountiesdeliver.org/county/colorado/"
+  },
+  {
+    "fips": "48091",
+    "name": "Comal",
+    "slug": "comal",
+    "directory_url": "https://texascountiesdeliver.org/county/comal/"
+  },
+  {
+    "fips": "48093",
+    "name": "Comanche",
+    "slug": "comanche",
+    "directory_url": "https://texascountiesdeliver.org/county/comanche/"
+  },
+  {
+    "fips": "48095",
+    "name": "Concho",
+    "slug": "concho",
+    "directory_url": "https://texascountiesdeliver.org/county/concho/"
+  },
+  {
+    "fips": "48097",
+    "name": "Cooke",
+    "slug": "cooke",
+    "directory_url": "https://texascountiesdeliver.org/county/cooke/"
+  },
+  {
+    "fips": "48099",
+    "name": "Coryell",
+    "slug": "coryell",
+    "directory_url": "https://texascountiesdeliver.org/county/coryell/"
+  },
+  {
+    "fips": "48101",
+    "name": "Cottle",
+    "slug": "cottle",
+    "directory_url": "https://texascountiesdeliver.org/county/cottle/"
+  },
+  {
+    "fips": "48103",
+    "name": "Crane",
+    "slug": "crane",
+    "directory_url": "https://texascountiesdeliver.org/county/crane/"
+  },
+  {
+    "fips": "48105",
+    "name": "Crockett",
+    "slug": "crockett",
+    "directory_url": "https://texascountiesdeliver.org/county/crockett/"
+  },
+  {
+    "fips": "48107",
+    "name": "Crosby",
+    "slug": "crosby",
+    "directory_url": "https://texascountiesdeliver.org/county/crosby/"
+  },
+  {
+    "fips": "48109",
+    "name": "Culberson",
+    "slug": "culberson",
+    "directory_url": "https://texascountiesdeliver.org/county/culberson/"
+  },
+  {
+    "fips": "48111",
+    "name": "Dallam",
+    "slug": "dallam",
+    "directory_url": "https://texascountiesdeliver.org/county/dallam/"
+  },
+  {
+    "fips": "48113",
+    "name": "Dallas",
+    "slug": "dallas",
+    "directory_url": "https://texascountiesdeliver.org/county/dallas/"
+  },
+  {
+    "fips": "48115",
+    "name": "Dawson",
+    "slug": "dawson",
+    "directory_url": "https://texascountiesdeliver.org/county/dawson/"
+  },
+  {
+    "fips": "48123",
+    "name": "DeWitt",
+    "slug": "dewitt",
+    "directory_url": "https://texascountiesdeliver.org/county/dewitt/"
+  },
+  {
+    "fips": "48117",
+    "name": "Deaf Smith",
+    "slug": "deaf-smith",
+    "directory_url": "https://texascountiesdeliver.org/county/deaf-smith/"
+  },
+  {
+    "fips": "48119",
+    "name": "Delta",
+    "slug": "delta",
+    "directory_url": "https://texascountiesdeliver.org/county/delta/"
+  },
+  {
+    "fips": "48121",
+    "name": "Denton",
+    "slug": "denton",
+    "directory_url": "https://texascountiesdeliver.org/county/denton/"
+  },
+  {
+    "fips": "48125",
+    "name": "Dickens",
+    "slug": "dickens",
+    "directory_url": "https://texascountiesdeliver.org/county/dickens/"
+  },
+  {
+    "fips": "48127",
+    "name": "Dimmit",
+    "slug": "dimmit",
+    "directory_url": "https://texascountiesdeliver.org/county/dimmit/"
+  },
+  {
+    "fips": "48129",
+    "name": "Donley",
+    "slug": "donley",
+    "directory_url": "https://texascountiesdeliver.org/county/donley/"
+  },
+  {
+    "fips": "48131",
+    "name": "Duval",
+    "slug": "duval",
+    "directory_url": "https://texascountiesdeliver.org/county/duval/"
+  },
+  {
+    "fips": "48133",
+    "name": "Eastland",
+    "slug": "eastland",
+    "directory_url": "https://texascountiesdeliver.org/county/eastland/"
+  },
+  {
+    "fips": "48135",
+    "name": "Ector",
+    "slug": "ector",
+    "directory_url": "https://texascountiesdeliver.org/county/ector/"
+  },
+  {
+    "fips": "48137",
+    "name": "Edwards",
+    "slug": "edwards",
+    "directory_url": "https://texascountiesdeliver.org/county/edwards/"
+  },
+  {
+    "fips": "48141",
+    "name": "El Paso",
+    "slug": "el-paso",
+    "directory_url": "https://texascountiesdeliver.org/county/el-paso/"
+  },
+  {
+    "fips": "48139",
+    "name": "Ellis",
+    "slug": "ellis",
+    "directory_url": "https://texascountiesdeliver.org/county/ellis/"
+  },
+  {
+    "fips": "48143",
+    "name": "Erath",
+    "slug": "erath",
+    "directory_url": "https://texascountiesdeliver.org/county/erath/"
+  },
+  {
+    "fips": "48145",
+    "name": "Falls",
+    "slug": "falls",
+    "directory_url": "https://texascountiesdeliver.org/county/falls/"
+  },
+  {
+    "fips": "48147",
+    "name": "Fannin",
+    "slug": "fannin",
+    "directory_url": "https://texascountiesdeliver.org/county/fannin/"
+  },
+  {
+    "fips": "48149",
+    "name": "Fayette",
+    "slug": "fayette",
+    "directory_url": "https://texascountiesdeliver.org/county/fayette/"
+  },
+  {
+    "fips": "48151",
+    "name": "Fisher",
+    "slug": "fisher",
+    "directory_url": "https://texascountiesdeliver.org/county/fisher/"
+  },
+  {
+    "fips": "48153",
+    "name": "Floyd",
+    "slug": "floyd",
+    "directory_url": "https://texascountiesdeliver.org/county/floyd/"
+  },
+  {
+    "fips": "48155",
+    "name": "Foard",
+    "slug": "foard",
+    "directory_url": "https://texascountiesdeliver.org/county/foard/"
+  },
+  {
+    "fips": "48157",
+    "name": "Fort Bend",
+    "slug": "fort-bend",
+    "directory_url": "https://texascountiesdeliver.org/county/fort-bend/"
+  },
+  {
+    "fips": "48159",
+    "name": "Franklin",
+    "slug": "franklin",
+    "directory_url": "https://texascountiesdeliver.org/county/franklin/"
+  },
+  {
+    "fips": "48161",
+    "name": "Freestone",
+    "slug": "freestone",
+    "directory_url": "https://texascountiesdeliver.org/county/freestone/"
+  },
+  {
+    "fips": "48163",
+    "name": "Frio",
+    "slug": "frio",
+    "directory_url": "https://texascountiesdeliver.org/county/frio/"
+  },
+  {
+    "fips": "48165",
+    "name": "Gaines",
+    "slug": "gaines",
+    "directory_url": "https://texascountiesdeliver.org/county/gaines/"
+  },
+  {
+    "fips": "48167",
+    "name": "Galveston",
+    "slug": "galveston",
+    "directory_url": "https://texascountiesdeliver.org/county/galveston/"
+  },
+  {
+    "fips": "48169",
+    "name": "Garza",
+    "slug": "garza",
+    "directory_url": "https://texascountiesdeliver.org/county/garza/"
+  },
+  {
+    "fips": "48171",
+    "name": "Gillespie",
+    "slug": "gillespie",
+    "directory_url": "https://texascountiesdeliver.org/county/gillespie/"
+  },
+  {
+    "fips": "48173",
+    "name": "Glasscock",
+    "slug": "glasscock",
+    "directory_url": "https://texascountiesdeliver.org/county/glasscock/"
+  },
+  {
+    "fips": "48175",
+    "name": "Goliad",
+    "slug": "goliad",
+    "directory_url": "https://texascountiesdeliver.org/county/goliad/"
+  },
+  {
+    "fips": "48177",
+    "name": "Gonzales",
+    "slug": "gonzales",
+    "directory_url": "https://texascountiesdeliver.org/county/gonzales/"
+  },
+  {
+    "fips": "48179",
+    "name": "Gray",
+    "slug": "gray",
+    "directory_url": "https://texascountiesdeliver.org/county/gray/"
+  },
+  {
+    "fips": "48181",
+    "name": "Grayson",
+    "slug": "grayson",
+    "directory_url": "https://texascountiesdeliver.org/county/grayson/"
+  },
+  {
+    "fips": "48183",
+    "name": "Gregg",
+    "slug": "gregg",
+    "directory_url": "https://texascountiesdeliver.org/county/gregg/"
+  },
+  {
+    "fips": "48185",
+    "name": "Grimes",
+    "slug": "grimes",
+    "directory_url": "https://texascountiesdeliver.org/county/grimes/"
+  },
+  {
+    "fips": "48187",
+    "name": "Guadalupe",
+    "slug": "guadalupe",
+    "directory_url": "https://texascountiesdeliver.org/county/guadalupe/"
+  },
+  {
+    "fips": "48189",
+    "name": "Hale",
+    "slug": "hale",
+    "directory_url": "https://texascountiesdeliver.org/county/hale/"
+  },
+  {
+    "fips": "48191",
+    "name": "Hall",
+    "slug": "hall",
+    "directory_url": "https://texascountiesdeliver.org/county/hall/"
+  },
+  {
+    "fips": "48193",
+    "name": "Hamilton",
+    "slug": "hamilton",
+    "directory_url": "https://texascountiesdeliver.org/county/hamilton/"
+  },
+  {
+    "fips": "48195",
+    "name": "Hansford",
+    "slug": "hansford",
+    "directory_url": "https://texascountiesdeliver.org/county/hansford/"
+  },
+  {
+    "fips": "48197",
+    "name": "Hardeman",
+    "slug": "hardeman",
+    "directory_url": "https://texascountiesdeliver.org/county/hardeman/"
+  },
+  {
+    "fips": "48199",
+    "name": "Hardin",
+    "slug": "hardin",
+    "directory_url": "https://texascountiesdeliver.org/county/hardin/"
+  },
+  {
+    "fips": "48201",
+    "name": "Harris",
+    "slug": "harris",
+    "directory_url": "https://texascountiesdeliver.org/county/harris/"
+  },
+  {
+    "fips": "48203",
+    "name": "Harrison",
+    "slug": "harrison",
+    "directory_url": "https://texascountiesdeliver.org/county/harrison/"
+  },
+  {
+    "fips": "48205",
+    "name": "Hartley",
+    "slug": "hartley",
+    "directory_url": "https://texascountiesdeliver.org/county/hartley/"
+  },
+  {
+    "fips": "48207",
+    "name": "Haskell",
+    "slug": "haskell",
+    "directory_url": "https://texascountiesdeliver.org/county/haskell/"
+  },
+  {
+    "fips": "48209",
+    "name": "Hays",
+    "slug": "hays",
+    "directory_url": "https://texascountiesdeliver.org/county/hays/"
+  },
+  {
+    "fips": "48211",
+    "name": "Hemphill",
+    "slug": "hemphill",
+    "directory_url": "https://texascountiesdeliver.org/county/hemphill/"
+  },
+  {
+    "fips": "48213",
+    "name": "Henderson",
+    "slug": "henderson",
+    "directory_url": "https://texascountiesdeliver.org/county/henderson/"
+  },
+  {
+    "fips": "48215",
+    "name": "Hidalgo",
+    "slug": "hidalgo",
+    "directory_url": "https://texascountiesdeliver.org/county/hidalgo/"
+  },
+  {
+    "fips": "48217",
+    "name": "Hill",
+    "slug": "hill",
+    "directory_url": "https://texascountiesdeliver.org/county/hill/"
+  },
+  {
+    "fips": "48219",
+    "name": "Hockley",
+    "slug": "hockley",
+    "directory_url": "https://texascountiesdeliver.org/county/hockley/"
+  },
+  {
+    "fips": "48221",
+    "name": "Hood",
+    "slug": "hood",
+    "directory_url": "https://texascountiesdeliver.org/county/hood/"
+  },
+  {
+    "fips": "48223",
+    "name": "Hopkins",
+    "slug": "hopkins",
+    "directory_url": "https://texascountiesdeliver.org/county/hopkins/"
+  },
+  {
+    "fips": "48225",
+    "name": "Houston",
+    "slug": "houston",
+    "directory_url": "https://texascountiesdeliver.org/county/houston/"
+  },
+  {
+    "fips": "48227",
+    "name": "Howard",
+    "slug": "howard",
+    "directory_url": "https://texascountiesdeliver.org/county/howard/"
+  },
+  {
+    "fips": "48229",
+    "name": "Hudspeth",
+    "slug": "hudspeth",
+    "directory_url": "https://texascountiesdeliver.org/county/hudspeth/"
+  },
+  {
+    "fips": "48231",
+    "name": "Hunt",
+    "slug": "hunt",
+    "directory_url": "https://texascountiesdeliver.org/county/hunt/"
+  },
+  {
+    "fips": "48233",
+    "name": "Hutchinson",
+    "slug": "hutchinson",
+    "directory_url": "https://texascountiesdeliver.org/county/hutchinson/"
+  },
+  {
+    "fips": "48235",
+    "name": "Irion",
+    "slug": "irion",
+    "directory_url": "https://texascountiesdeliver.org/county/irion/"
+  },
+  {
+    "fips": "48237",
+    "name": "Jack",
+    "slug": "jack",
+    "directory_url": "https://texascountiesdeliver.org/county/jack/"
+  },
+  {
+    "fips": "48239",
+    "name": "Jackson",
+    "slug": "jackson",
+    "directory_url": "https://texascountiesdeliver.org/county/jackson/"
+  },
+  {
+    "fips": "48241",
+    "name": "Jasper",
+    "slug": "jasper",
+    "directory_url": "https://texascountiesdeliver.org/county/jasper/"
+  },
+  {
+    "fips": "48243",
+    "name": "Jeff Davis",
+    "slug": "jeff-davis",
+    "directory_url": "https://texascountiesdeliver.org/county/jeff-davis/"
+  },
+  {
+    "fips": "48245",
+    "name": "Jefferson",
+    "slug": "jefferson",
+    "directory_url": "https://texascountiesdeliver.org/county/jefferson/"
+  },
+  {
+    "fips": "48247",
+    "name": "Jim Hogg",
+    "slug": "jim-hogg",
+    "directory_url": "https://texascountiesdeliver.org/county/jim-hogg/"
+  },
+  {
+    "fips": "48249",
+    "name": "Jim Wells",
+    "slug": "jim-wells",
+    "directory_url": "https://texascountiesdeliver.org/county/jim-wells/"
+  },
+  {
+    "fips": "48251",
+    "name": "Johnson",
+    "slug": "johnson",
+    "directory_url": "https://texascountiesdeliver.org/county/johnson/"
+  },
+  {
+    "fips": "48253",
+    "name": "Jones",
+    "slug": "jones",
+    "directory_url": "https://texascountiesdeliver.org/county/jones/"
+  },
+  {
+    "fips": "48255",
+    "name": "Karnes",
+    "slug": "karnes",
+    "directory_url": "https://texascountiesdeliver.org/county/karnes/"
+  },
+  {
+    "fips": "48257",
+    "name": "Kaufman",
+    "slug": "kaufman",
+    "directory_url": "https://texascountiesdeliver.org/county/kaufman/"
+  },
+  {
+    "fips": "48259",
+    "name": "Kendall",
+    "slug": "kendall",
+    "directory_url": "https://texascountiesdeliver.org/county/kendall/"
+  },
+  {
+    "fips": "48261",
+    "name": "Kenedy",
+    "slug": "kenedy",
+    "directory_url": "https://texascountiesdeliver.org/county/kenedy/"
+  },
+  {
+    "fips": "48263",
+    "name": "Kent",
+    "slug": "kent",
+    "directory_url": "https://texascountiesdeliver.org/county/kent/"
+  },
+  {
+    "fips": "48265",
+    "name": "Kerr",
+    "slug": "kerr",
+    "directory_url": "https://texascountiesdeliver.org/county/kerr/"
+  },
+  {
+    "fips": "48267",
+    "name": "Kimble",
+    "slug": "kimble",
+    "directory_url": "https://texascountiesdeliver.org/county/kimble/"
+  },
+  {
+    "fips": "48269",
+    "name": "King",
+    "slug": "king",
+    "directory_url": "https://texascountiesdeliver.org/county/king/"
+  },
+  {
+    "fips": "48271",
+    "name": "Kinney",
+    "slug": "kinney",
+    "directory_url": "https://texascountiesdeliver.org/county/kinney/"
+  },
+  {
+    "fips": "48273",
+    "name": "Kleberg",
+    "slug": "kleberg",
+    "directory_url": "https://texascountiesdeliver.org/county/kleberg/"
+  },
+  {
+    "fips": "48275",
+    "name": "Knox",
+    "slug": "knox",
+    "directory_url": "https://texascountiesdeliver.org/county/knox/"
+  },
+  {
+    "fips": "48283",
+    "name": "La Salle",
+    "slug": "la-salle",
+    "directory_url": "https://texascountiesdeliver.org/county/la-salle/"
+  },
+  {
+    "fips": "48277",
+    "name": "Lamar",
+    "slug": "lamar",
+    "directory_url": "https://texascountiesdeliver.org/county/lamar/"
+  },
+  {
+    "fips": "48279",
+    "name": "Lamb",
+    "slug": "lamb",
+    "directory_url": "https://texascountiesdeliver.org/county/lamb/"
+  },
+  {
+    "fips": "48281",
+    "name": "Lampasas",
+    "slug": "lampasas",
+    "directory_url": "https://texascountiesdeliver.org/county/lampasas/"
+  },
+  {
+    "fips": "48285",
+    "name": "Lavaca",
+    "slug": "lavaca",
+    "directory_url": "https://texascountiesdeliver.org/county/lavaca/"
+  },
+  {
+    "fips": "48287",
+    "name": "Lee",
+    "slug": "lee",
+    "directory_url": "https://texascountiesdeliver.org/county/lee/"
+  },
+  {
+    "fips": "48289",
+    "name": "Leon",
+    "slug": "leon",
+    "directory_url": "https://texascountiesdeliver.org/county/leon/"
+  },
+  {
+    "fips": "48291",
+    "name": "Liberty",
+    "slug": "liberty",
+    "directory_url": "https://texascountiesdeliver.org/county/liberty/"
+  },
+  {
+    "fips": "48293",
+    "name": "Limestone",
+    "slug": "limestone",
+    "directory_url": "https://texascountiesdeliver.org/county/limestone/"
+  },
+  {
+    "fips": "48295",
+    "name": "Lipscomb",
+    "slug": "lipscomb",
+    "directory_url": "https://texascountiesdeliver.org/county/lipscomb/"
+  },
+  {
+    "fips": "48297",
+    "name": "Live Oak",
+    "slug": "live-oak",
+    "directory_url": "https://texascountiesdeliver.org/county/live-oak/"
+  },
+  {
+    "fips": "48299",
+    "name": "Llano",
+    "slug": "llano",
+    "directory_url": "https://texascountiesdeliver.org/county/llano/"
+  },
+  {
+    "fips": "48301",
+    "name": "Loving",
+    "slug": "loving",
+    "directory_url": "https://texascountiesdeliver.org/county/loving/"
+  },
+  {
+    "fips": "48303",
+    "name": "Lubbock",
+    "slug": "lubbock",
+    "directory_url": "https://texascountiesdeliver.org/county/lubbock/"
+  },
+  {
+    "fips": "48305",
+    "name": "Lynn",
+    "slug": "lynn",
+    "directory_url": "https://texascountiesdeliver.org/county/lynn/"
+  },
+  {
+    "fips": "48313",
+    "name": "Madison",
+    "slug": "madison",
+    "directory_url": "https://texascountiesdeliver.org/county/madison/"
+  },
+  {
+    "fips": "48315",
+    "name": "Marion",
+    "slug": "marion",
+    "directory_url": "https://texascountiesdeliver.org/county/marion/"
+  },
+  {
+    "fips": "48317",
+    "name": "Martin",
+    "slug": "martin",
+    "directory_url": "https://texascountiesdeliver.org/county/martin/"
+  },
+  {
+    "fips": "48319",
+    "name": "Mason",
+    "slug": "mason",
+    "directory_url": "https://texascountiesdeliver.org/county/mason/"
+  },
+  {
+    "fips": "48321",
+    "name": "Matagorda",
+    "slug": "matagorda",
+    "directory_url": "https://texascountiesdeliver.org/county/matagorda/"
+  },
+  {
+    "fips": "48323",
+    "name": "Maverick",
+    "slug": "maverick",
+    "directory_url": "https://texascountiesdeliver.org/county/maverick/"
+  },
+  {
+    "fips": "48307",
+    "name": "McCulloch",
+    "slug": "mcculloch",
+    "directory_url": "https://texascountiesdeliver.org/county/mcculloch/"
+  },
+  {
+    "fips": "48309",
+    "name": "McLennan",
+    "slug": "mclennan",
+    "directory_url": "https://texascountiesdeliver.org/county/mclennan/"
+  },
+  {
+    "fips": "48311",
+    "name": "McMullen",
+    "slug": "mcmullen",
+    "directory_url": "https://texascountiesdeliver.org/county/mcmullen/"
+  },
+  {
+    "fips": "48325",
+    "name": "Medina",
+    "slug": "medina",
+    "directory_url": "https://texascountiesdeliver.org/county/medina/"
+  },
+  {
+    "fips": "48327",
+    "name": "Menard",
+    "slug": "menard",
+    "directory_url": "https://texascountiesdeliver.org/county/menard/"
+  },
+  {
+    "fips": "48329",
+    "name": "Midland",
+    "slug": "midland",
+    "directory_url": "https://texascountiesdeliver.org/county/midland/"
+  },
+  {
+    "fips": "48331",
+    "name": "Milam",
+    "slug": "milam",
+    "directory_url": "https://texascountiesdeliver.org/county/milam/"
+  },
+  {
+    "fips": "48333",
+    "name": "Mills",
+    "slug": "mills",
+    "directory_url": "https://texascountiesdeliver.org/county/mills/"
+  },
+  {
+    "fips": "48335",
+    "name": "Mitchell",
+    "slug": "mitchell",
+    "directory_url": "https://texascountiesdeliver.org/county/mitchell/"
+  },
+  {
+    "fips": "48337",
+    "name": "Montague",
+    "slug": "montague",
+    "directory_url": "https://texascountiesdeliver.org/county/montague/"
+  },
+  {
+    "fips": "48339",
+    "name": "Montgomery",
+    "slug": "montgomery",
+    "directory_url": "https://texascountiesdeliver.org/county/montgomery/"
+  },
+  {
+    "fips": "48341",
+    "name": "Moore",
+    "slug": "moore",
+    "directory_url": "https://texascountiesdeliver.org/county/moore/"
+  },
+  {
+    "fips": "48343",
+    "name": "Morris",
+    "slug": "morris",
+    "directory_url": "https://texascountiesdeliver.org/county/morris/"
+  },
+  {
+    "fips": "48345",
+    "name": "Motley",
+    "slug": "motley",
+    "directory_url": "https://texascountiesdeliver.org/county/motley/"
+  },
+  {
+    "fips": "48347",
+    "name": "Nacogdoches",
+    "slug": "nacogdoches",
+    "directory_url": "https://texascountiesdeliver.org/county/nacogdoches/"
+  },
+  {
+    "fips": "48349",
+    "name": "Navarro",
+    "slug": "navarro",
+    "directory_url": "https://texascountiesdeliver.org/county/navarro/"
+  },
+  {
+    "fips": "48351",
+    "name": "Newton",
+    "slug": "newton",
+    "directory_url": "https://texascountiesdeliver.org/county/newton/"
+  },
+  {
+    "fips": "48353",
+    "name": "Nolan",
+    "slug": "nolan",
+    "directory_url": "https://texascountiesdeliver.org/county/nolan/"
+  },
+  {
+    "fips": "48355",
+    "name": "Nueces",
+    "slug": "nueces",
+    "directory_url": "https://texascountiesdeliver.org/county/nueces/"
+  },
+  {
+    "fips": "48357",
+    "name": "Ochiltree",
+    "slug": "ochiltree",
+    "directory_url": "https://texascountiesdeliver.org/county/ochiltree/"
+  },
+  {
+    "fips": "48359",
+    "name": "Oldham",
+    "slug": "oldham",
+    "directory_url": "https://texascountiesdeliver.org/county/oldham/"
+  },
+  {
+    "fips": "48361",
+    "name": "Orange",
+    "slug": "orange",
+    "directory_url": "https://texascountiesdeliver.org/county/orange/"
+  },
+  {
+    "fips": "48363",
+    "name": "Palo Pinto",
+    "slug": "palo-pinto",
+    "directory_url": "https://texascountiesdeliver.org/county/palo-pinto/"
+  },
+  {
+    "fips": "48365",
+    "name": "Panola",
+    "slug": "panola",
+    "directory_url": "https://texascountiesdeliver.org/county/panola/"
+  },
+  {
+    "fips": "48367",
+    "name": "Parker",
+    "slug": "parker",
+    "directory_url": "https://texascountiesdeliver.org/county/parker/"
+  },
+  {
+    "fips": "48369",
+    "name": "Parmer",
+    "slug": "parmer",
+    "directory_url": "https://texascountiesdeliver.org/county/parmer/"
+  },
+  {
+    "fips": "48371",
+    "name": "Pecos",
+    "slug": "pecos",
+    "directory_url": "https://texascountiesdeliver.org/county/pecos/"
+  },
+  {
+    "fips": "48373",
+    "name": "Polk",
+    "slug": "polk",
+    "directory_url": "https://texascountiesdeliver.org/county/polk/"
+  },
+  {
+    "fips": "48375",
+    "name": "Potter",
+    "slug": "potter",
+    "directory_url": "https://texascountiesdeliver.org/county/potter/"
+  },
+  {
+    "fips": "48377",
+    "name": "Presidio",
+    "slug": "presidio",
+    "directory_url": "https://texascountiesdeliver.org/county/presidio/"
+  },
+  {
+    "fips": "48379",
+    "name": "Rains",
+    "slug": "rains",
+    "directory_url": "https://texascountiesdeliver.org/county/rains/"
+  },
+  {
+    "fips": "48381",
+    "name": "Randall",
+    "slug": "randall",
+    "directory_url": "https://texascountiesdeliver.org/county/randall/"
+  },
+  {
+    "fips": "48383",
+    "name": "Reagan",
+    "slug": "reagan",
+    "directory_url": "https://texascountiesdeliver.org/county/reagan/"
+  },
+  {
+    "fips": "48385",
+    "name": "Real",
+    "slug": "real",
+    "directory_url": "https://texascountiesdeliver.org/county/real/"
+  },
+  {
+    "fips": "48387",
+    "name": "Red River",
+    "slug": "red-river",
+    "directory_url": "https://texascountiesdeliver.org/county/red-river/"
+  },
+  {
+    "fips": "48389",
+    "name": "Reeves",
+    "slug": "reeves",
+    "directory_url": "https://texascountiesdeliver.org/county/reeves/"
+  },
+  {
+    "fips": "48391",
+    "name": "Refugio",
+    "slug": "refugio",
+    "directory_url": "https://texascountiesdeliver.org/county/refugio/"
+  },
+  {
+    "fips": "48393",
+    "name": "Roberts",
+    "slug": "roberts",
+    "directory_url": "https://texascountiesdeliver.org/county/roberts/"
+  },
+  {
+    "fips": "48395",
+    "name": "Robertson",
+    "slug": "robertson",
+    "directory_url": "https://texascountiesdeliver.org/county/robertson/"
+  },
+  {
+    "fips": "48397",
+    "name": "Rockwall",
+    "slug": "rockwall",
+    "directory_url": "https://texascountiesdeliver.org/county/rockwall/"
+  },
+  {
+    "fips": "48399",
+    "name": "Runnels",
+    "slug": "runnels",
+    "directory_url": "https://texascountiesdeliver.org/county/runnels/"
+  },
+  {
+    "fips": "48401",
+    "name": "Rusk",
+    "slug": "rusk",
+    "directory_url": "https://texascountiesdeliver.org/county/rusk/"
+  },
+  {
+    "fips": "48403",
+    "name": "Sabine",
+    "slug": "sabine",
+    "directory_url": "https://texascountiesdeliver.org/county/sabine/"
+  },
+  {
+    "fips": "48405",
+    "name": "San Augustine",
+    "slug": "san-augustine",
+    "directory_url": "https://texascountiesdeliver.org/county/san-augustine/"
+  },
+  {
+    "fips": "48407",
+    "name": "San Jacinto",
+    "slug": "san-jacinto",
+    "directory_url": "https://texascountiesdeliver.org/county/san-jacinto/"
+  },
+  {
+    "fips": "48409",
+    "name": "San Patricio",
+    "slug": "san-patricio",
+    "directory_url": "https://texascountiesdeliver.org/county/san-patricio/"
+  },
+  {
+    "fips": "48411",
+    "name": "San Saba",
+    "slug": "san-saba",
+    "directory_url": "https://texascountiesdeliver.org/county/san-saba/"
+  },
+  {
+    "fips": "48413",
+    "name": "Schleicher",
+    "slug": "schleicher",
+    "directory_url": "https://texascountiesdeliver.org/county/schleicher/"
+  },
+  {
+    "fips": "48415",
+    "name": "Scurry",
+    "slug": "scurry",
+    "directory_url": "https://texascountiesdeliver.org/county/scurry/"
+  },
+  {
+    "fips": "48417",
+    "name": "Shackelford",
+    "slug": "shackelford",
+    "directory_url": "https://texascountiesdeliver.org/county/shackelford/"
+  },
+  {
+    "fips": "48419",
+    "name": "Shelby",
+    "slug": "shelby",
+    "directory_url": "https://texascountiesdeliver.org/county/shelby/"
+  },
+  {
+    "fips": "48421",
+    "name": "Sherman",
+    "slug": "sherman",
+    "directory_url": "https://texascountiesdeliver.org/county/sherman/"
+  },
+  {
+    "fips": "48423",
+    "name": "Smith",
+    "slug": "smith",
+    "directory_url": "https://texascountiesdeliver.org/county/smith/"
+  },
+  {
+    "fips": "48425",
+    "name": "Somervell",
+    "slug": "somervell",
+    "directory_url": "https://texascountiesdeliver.org/county/somervell/"
+  },
+  {
+    "fips": "48427",
+    "name": "Starr",
+    "slug": "starr",
+    "directory_url": "https://texascountiesdeliver.org/county/starr/"
+  },
+  {
+    "fips": "48429",
+    "name": "Stephens",
+    "slug": "stephens",
+    "directory_url": "https://texascountiesdeliver.org/county/stephens/"
+  },
+  {
+    "fips": "48431",
+    "name": "Sterling",
+    "slug": "sterling",
+    "directory_url": "https://texascountiesdeliver.org/county/sterling/"
+  },
+  {
+    "fips": "48433",
+    "name": "Stonewall",
+    "slug": "stonewall",
+    "directory_url": "https://texascountiesdeliver.org/county/stonewall/"
+  },
+  {
+    "fips": "48435",
+    "name": "Sutton",
+    "slug": "sutton",
+    "directory_url": "https://texascountiesdeliver.org/county/sutton/"
+  },
+  {
+    "fips": "48437",
+    "name": "Swisher",
+    "slug": "swisher",
+    "directory_url": "https://texascountiesdeliver.org/county/swisher/"
+  },
+  {
+    "fips": "48439",
+    "name": "Tarrant",
+    "slug": "tarrant",
+    "directory_url": "https://texascountiesdeliver.org/county/tarrant/"
+  },
+  {
+    "fips": "48441",
+    "name": "Taylor",
+    "slug": "taylor",
+    "directory_url": "https://texascountiesdeliver.org/county/taylor/"
+  },
+  {
+    "fips": "48443",
+    "name": "Terrell",
+    "slug": "terrell",
+    "directory_url": "https://texascountiesdeliver.org/county/terrell/"
+  },
+  {
+    "fips": "48445",
+    "name": "Terry",
+    "slug": "terry",
+    "directory_url": "https://texascountiesdeliver.org/county/terry/"
+  },
+  {
+    "fips": "48447",
+    "name": "Throckmorton",
+    "slug": "throckmorton",
+    "directory_url": "https://texascountiesdeliver.org/county/throckmorton/"
+  },
+  {
+    "fips": "48449",
+    "name": "Titus",
+    "slug": "titus",
+    "directory_url": "https://texascountiesdeliver.org/county/titus/"
+  },
+  {
+    "fips": "48451",
+    "name": "Tom Green",
+    "slug": "tom-green",
+    "directory_url": "https://texascountiesdeliver.org/county/tom-green/"
+  },
+  {
+    "fips": "48453",
+    "name": "Travis",
+    "slug": "travis",
+    "directory_url": "https://texascountiesdeliver.org/county/travis/"
+  },
+  {
+    "fips": "48455",
+    "name": "Trinity",
+    "slug": "trinity",
+    "directory_url": "https://texascountiesdeliver.org/county/trinity/"
+  },
+  {
+    "fips": "48457",
+    "name": "Tyler",
+    "slug": "tyler",
+    "directory_url": "https://texascountiesdeliver.org/county/tyler/"
+  },
+  {
+    "fips": "48459",
+    "name": "Upshur",
+    "slug": "upshur",
+    "directory_url": "https://texascountiesdeliver.org/county/upshur/"
+  },
+  {
+    "fips": "48461",
+    "name": "Upton",
+    "slug": "upton",
+    "directory_url": "https://texascountiesdeliver.org/county/upton/"
+  },
+  {
+    "fips": "48463",
+    "name": "Uvalde",
+    "slug": "uvalde",
+    "directory_url": "https://texascountiesdeliver.org/county/uvalde/"
+  },
+  {
+    "fips": "48465",
+    "name": "Val Verde",
+    "slug": "val-verde",
+    "directory_url": "https://texascountiesdeliver.org/county/val-verde/"
+  },
+  {
+    "fips": "48467",
+    "name": "Van Zandt",
+    "slug": "van-zandt",
+    "directory_url": "https://texascountiesdeliver.org/county/van-zandt/"
+  },
+  {
+    "fips": "48469",
+    "name": "Victoria",
+    "slug": "victoria",
+    "directory_url": "https://texascountiesdeliver.org/county/victoria/"
+  },
+  {
+    "fips": "48471",
+    "name": "Walker",
+    "slug": "walker",
+    "directory_url": "https://texascountiesdeliver.org/county/walker/"
+  },
+  {
+    "fips": "48473",
+    "name": "Waller",
+    "slug": "waller",
+    "directory_url": "https://texascountiesdeliver.org/county/waller/"
+  },
+  {
+    "fips": "48475",
+    "name": "Ward",
+    "slug": "ward",
+    "directory_url": "https://texascountiesdeliver.org/county/ward/"
+  },
+  {
+    "fips": "48477",
+    "name": "Washington",
+    "slug": "washington",
+    "directory_url": "https://texascountiesdeliver.org/county/washington/"
+  },
+  {
+    "fips": "48479",
+    "name": "Webb",
+    "slug": "webb",
+    "directory_url": "https://texascountiesdeliver.org/county/webb/"
+  },
+  {
+    "fips": "48481",
+    "name": "Wharton",
+    "slug": "wharton",
+    "directory_url": "https://texascountiesdeliver.org/county/wharton/"
+  },
+  {
+    "fips": "48483",
+    "name": "Wheeler",
+    "slug": "wheeler",
+    "directory_url": "https://texascountiesdeliver.org/county/wheeler/"
+  },
+  {
+    "fips": "48485",
+    "name": "Wichita",
+    "slug": "wichita",
+    "directory_url": "https://texascountiesdeliver.org/county/wichita/"
+  },
+  {
+    "fips": "48487",
+    "name": "Wilbarger",
+    "slug": "wilbarger",
+    "directory_url": "https://texascountiesdeliver.org/county/wilbarger/"
+  },
+  {
+    "fips": "48489",
+    "name": "Willacy",
+    "slug": "willacy",
+    "directory_url": "https://texascountiesdeliver.org/county/willacy/"
+  },
+  {
+    "fips": "48491",
+    "name": "Williamson",
+    "slug": "williamson",
+    "directory_url": "https://texascountiesdeliver.org/county/williamson/"
+  },
+  {
+    "fips": "48493",
+    "name": "Wilson",
+    "slug": "wilson",
+    "directory_url": "https://texascountiesdeliver.org/county/wilson/"
+  },
+  {
+    "fips": "48495",
+    "name": "Winkler",
+    "slug": "winkler",
+    "directory_url": "https://texascountiesdeliver.org/county/winkler/"
+  },
+  {
+    "fips": "48497",
+    "name": "Wise",
+    "slug": "wise",
+    "directory_url": "https://texascountiesdeliver.org/county/wise/"
+  },
+  {
+    "fips": "48499",
+    "name": "Wood",
+    "slug": "wood",
+    "directory_url": "https://texascountiesdeliver.org/county/wood/"
+  },
+  {
+    "fips": "48501",
+    "name": "Yoakum",
+    "slug": "yoakum",
+    "directory_url": "https://texascountiesdeliver.org/county/yoakum/"
+  },
+  {
+    "fips": "48503",
+    "name": "Young",
+    "slug": "young",
+    "directory_url": "https://texascountiesdeliver.org/county/young/"
+  },
+  {
+    "fips": "48505",
+    "name": "Zapata",
+    "slug": "zapata",
+    "directory_url": "https://texascountiesdeliver.org/county/zapata/"
+  },
+  {
+    "fips": "48507",
+    "name": "Zavala",
+    "slug": "zavala",
+    "directory_url": "https://texascountiesdeliver.org/county/zavala/"
+  }
+]
