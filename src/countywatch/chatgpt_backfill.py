@@ -26,7 +26,6 @@ from .deep_rebuild import (
     POSTURES,
     SIGNAL_KINDS,
     STAGES,
-    STAGE_RANK,
     TOPICS,
     _automatic_single_event_result,
     _canonical_event_rank,
@@ -51,7 +50,7 @@ from .deep_rebuild import (
     seed_county_jobs,
     seed_jobs,
 )
-from .utils import json_dumps, json_loads, normalize_space, utcnow
+from .utils import json_dumps, normalize_space, utcnow
 
 console = Console()
 FORMAT_VERSION = "countywatch-chatgpt-backfill-v1"
@@ -1351,16 +1350,42 @@ def status(settings: Settings) -> int:
         db = Database(settings.database)
         try:
             if _table_exists(db, "deep_jobs"):
+                deep_jobs_final = int(
+                    db.scalar(
+                        "SELECT count(*) FROM deep_jobs WHERE status='final'",
+                        default=0,
+                    )
+                    or 0
+                )
+                deep_jobs_total = int(
+                    db.scalar(
+                        "SELECT count(*) FROM deep_jobs",
+                        default=0,
+                    )
+                    or 0
+                )
                 table.add_row(
                     "Deep document jobs final",
-                    f"{int(db.scalar('SELECT count(*) FROM deep_jobs WHERE status=\'final\'', default=0) or 0)} / "
-                    f"{int(db.scalar('SELECT count(*) FROM deep_jobs', default=0) or 0)}",
+                    f"{deep_jobs_final} / {deep_jobs_total}",
                 )
             if _table_exists(db, "deep_county_jobs"):
+                deep_county_jobs_final = int(
+                    db.scalar(
+                        "SELECT count(*) FROM deep_county_jobs WHERE status='final'",
+                        default=0,
+                    )
+                    or 0
+                )
+                deep_county_jobs_total = int(
+                    db.scalar(
+                        "SELECT count(*) FROM deep_county_jobs",
+                        default=0,
+                    )
+                    or 0
+                )
                 table.add_row(
                     "Deep county jobs final",
-                    f"{int(db.scalar('SELECT count(*) FROM deep_county_jobs WHERE status=\'final\'', default=0) or 0)} / "
-                    f"{int(db.scalar('SELECT count(*) FROM deep_county_jobs', default=0) or 0)}",
+                    f"{deep_county_jobs_final} / {deep_county_jobs_total}",
                 )
         finally:
             db.close()
