@@ -3,6 +3,7 @@ from __future__ import annotations
 import asyncio
 import gzip
 import json
+import os
 import time
 from dataclasses import asdict
 from datetime import UTC, date, datetime, timedelta
@@ -102,6 +103,7 @@ class UpdatePipeline:
             "revisions_created": 0,
             "analyses_created": 0,
             "analyses_upgraded": 0,
+            "analyses_deferred": 0,
             "signals_created": 0,
             "documents_skipped_old": 0,
             "documents_skipped_cap": 0,
@@ -111,6 +113,12 @@ class UpdatePipeline:
         }
         self.client = CrawlerClient(settings)
         self.router = LLMRouter(settings, db, run_id)
+        self.defer_analysis = os.getenv("COUNTYWATCH_DEFER_ANALYSIS", "").strip().lower() in {
+            "1",
+            "true",
+            "yes",
+            "on",
+        }
         self._analysis_sem = asyncio.Semaphore(max(1, min(3, settings.concurrency)))
         self._deadline = (
             time.monotonic() + settings.max_run_minutes * 60
@@ -290,6 +298,28 @@ class UpdatePipeline:
                 content_hash = sha256_bytes(data)
                 mime_type = result.content_type or "application/octet-stream"
                 result_headers = result.headers
+                # Many county servers ignore ETag/If-Modified-Since and return the
+                # same PDF with HTTP 200 every run. Compare bytes before extraction
+                # so unchanged scanned packets are not OCR'd again on fresh CI runners.
+                if existing and existing.get("current_content_hash") == content_hash:
+                    self.db.execute(
+                        """
+                        UPDATE documents SET last_seen_at=?, status='ok', failure_count=0,
+                            last_error=NULL, etag=coalesce(?,etag),
+                            last_modified=coalesce(?,last_modified),
+                            mime_type=coalesce(?,mime_type)
+                        WHERE id=?
+                        """,
+                        (
+                            utcnow(),
+                            result_headers.get("etag"),
+                            result_headers.get("last-modified"),
+                            mime_type,
+                            int(existing["id"]),
+                        ),
+                    )
+                    self.stats["documents_not_modified"] += 1
+                    return
                 extraction = await asyncio.to_thread(
                     extract_document, data, mime_type, url, self.settings
                 )
@@ -349,6 +379,14 @@ class UpdatePipeline:
             )
             if created:
                 self.stats["revisions_created"] += 1
+            if self.defer_analysis:
+                # Persist only source-grounded candidate text for the deep-review queue.
+                # Do not create or export legacy rules signals in cloud crawl jobs.
+                passages = await asyncio.to_thread(extract_passages, text)
+                if passages:
+                    self.db.store_revision_text(revision_id, text)
+                self.stats["analyses_deferred"] += 1
+                return
             cached = self.db.analysis(revision_id, PROMPT_VERSION)
             # Rule-only results remain immediately useful but can be upgraded by an LLM later.
             if cached and not (cached.get("engine") == "rules" and self.router.available()):
@@ -382,7 +420,7 @@ class UpdatePipeline:
         rows = self.db.query(
             """
             SELECT canonical_url,title,document_type,meeting_date,published_at,
-                   first_seen_at,last_seen_at,status
+                   first_seen_at,last_seen_at,status,failure_count
             FROM documents
             WHERE source_id=?
             ORDER BY coalesce(meeting_date,first_seen_at) DESC
@@ -406,9 +444,14 @@ class UpdatePipeline:
                     reference = None
             reference = reference or parse_iso(row.get("first_seen_at"))
             age_days = max(0, (now - reference).days) if reference else 0
-            if age_days > lookback and row.get("status") != "error":
+            if age_days > lookback:
                 continue
-            if row.get("status") == "error" or age_days <= 45:
+            if row.get("status") == "error":
+                # Do not hammer the same permanently broken county links every day.
+                # Retry after 1, 2, 4, 8, 16, then 30 days as failures accumulate.
+                failures = max(1, int(row.get("failure_count") or 1))
+                refresh_after = timedelta(days=min(30, 2 ** min(failures - 1, 5)))
+            elif age_days <= 45:
                 refresh_after = timedelta(hours=20)
             elif age_days <= 180:
                 refresh_after = timedelta(days=6)
@@ -613,9 +656,12 @@ class UpdatePipeline:
                 f"Source discovery encountered {discovery_errors} non-speculative page failure(s)"
             )
         if not discover_only:
-            self.stats["backlog_upgraded_before_crawl"] = await self.upgrade_rule_backlog(
-                county_fips
-            )
+            if self.defer_analysis:
+                self.stats["backlog_upgraded_before_crawl"] = 0
+            else:
+                self.stats["backlog_upgraded_before_crawl"] = await self.upgrade_rule_backlog(
+                    county_fips
+                )
             counties = self.db.counties_for_crawl(county_fips, max_counties)
             # Never-crawled/stalest counties run first. The optional time budget lets
             # cloud jobs finish cleanly and persist progress instead of being hard-killed.
@@ -629,11 +675,17 @@ class UpdatePipeline:
                     await self.crawl_county(county)
 
             await asyncio.gather(*(worker(county) for county in counties))
-            self.stats["backlog_upgraded_after_crawl"] = await self.upgrade_rule_backlog(
-                county_fips
-            )
-        recompute_snapshots(self.db)
-        self.stats["export"] = export_site(self.db, self.settings.site_dir)
+            if self.defer_analysis:
+                self.stats["backlog_upgraded_after_crawl"] = 0
+            else:
+                self.stats["backlog_upgraded_after_crawl"] = await self.upgrade_rule_backlog(
+                    county_fips
+                )
+        if self.defer_analysis:
+            self.stats["export"] = {"skipped": True, "reason": "deep review pending"}
+        else:
+            recompute_snapshots(self.db)
+            self.stats["export"] = export_site(self.db, self.settings.site_dir)
         self.stats["llm_calls"] = self.router.calls
         return self.stats
 

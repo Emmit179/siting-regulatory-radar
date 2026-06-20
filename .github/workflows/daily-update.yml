@@ -1,7 +1,16 @@
-name: Daily update and deploy
+name: Deploy or bounded update
 
 on:
   workflow_dispatch:
+    inputs:
+      mode:
+        description: What should this run do?
+        required: true
+        type: choice
+        default: deploy
+        options:
+          - deploy
+          - update
   schedule:
     - cron: '17 3 * * *'
       timezone: 'America/Chicago'
@@ -11,27 +20,60 @@ permissions:
   pages: write
   id-token: write
 
-env:
-  PYTHONUNBUFFERED: '1'
-  COUNTYWATCH_CONTACT_EMAIL: ${{ vars.COUNTYWATCH_CONTACT_EMAIL }}
-  COUNTYWATCH_LLM_MAX_CALLS_PER_RUN: ${{ vars.COUNTYWATCH_LLM_MAX_CALLS_PER_RUN || '450' }}
-  COUNTYWATCH_MAX_RUN_MINUTES: ${{ vars.COUNTYWATCH_MAX_RUN_MINUTES || '300' }}
-  GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-  GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-  OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-  COUNTYWATCH_ALLOW_INSECURE_TLS: 'false'
-
 concurrency:
-  group: countywatch-pages
+  group: siting-regulatory-radar-pages
   cancel-in-progress: false
 
 jobs:
-  update:
+  deploy_existing_site:
+    if: github.event_name == 'workflow_dispatch' && inputs.mode == 'deploy'
     runs-on: ubuntu-latest
-    timeout-minutes: 330
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload existing static dashboard
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  bounded_update_and_deploy:
+    if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.mode == 'update')
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      PYTHONUNBUFFERED: '1'
+      COUNTYWATCH_CONTACT_EMAIL: ${{ vars.COUNTYWATCH_CONTACT_EMAIL }}
+      COUNTYWATCH_LLM_MAX_CALLS_PER_RUN: '0'
+      COUNTYWATCH_DEFER_ANALYSIS: 'true'
+      COUNTYWATCH_MAX_RUN_MINUTES: '75'
+      COUNTYWATCH_CONCURRENCY: '6'
+      COUNTYWATCH_MAX_OCR_PAGES: '40'
+      COUNTYWATCH_DEEP_GROQ_MODEL: openai/gpt-oss-120b
+      COUNTYWATCH_DEEP_GEMINI_MODEL: gemini-3.1-flash-lite
+      COUNTYWATCH_DEEP_MAX_GROQ_CALLS: '120'
+      COUNTYWATCH_DEEP_MAX_GEMINI_CALLS: '100'
+      COUNTYWATCH_DEEP_MAX_RUN_MINUTES: '30'
+      COUNTYWATCH_DEEP_AUTO_WAIT: 'false'
+      COUNTYWATCH_DEEP_KEEP_WINDOWS_AWAKE: 'false'
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      COUNTYWATCH_ALLOW_INSECURE_TLS: 'false'
+
     steps:
       - name: Check out repository
         uses: actions/checkout@v6
@@ -48,16 +90,10 @@ jobs:
       - name: Install application
         run: |
           python -m pip install --upgrade pip
-          python -m pip install -e ".[dev]"
+          python -m pip install -e .
           python -m playwright install --with-deps chromium
 
-      - name: Validate application before crawling
-        run: |
-          ruff check .
-          python -m pytest -q
-
       - name: Restore durable crawler state
-        continue-on-error: true
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -65,10 +101,13 @@ jobs:
           gh release download countywatch-state --pattern countywatch-state.sqlite3.gz --output var/countywatch-state.sqlite3.gz
           python -m countywatch state-unpack var/countywatch-state.sqlite3.gz
 
-      - name: Incremental county update
-        run: python -m countywatch update
+      - name: Crawl stale counties within a 75-minute budget and defer all analysis
+        run: python -m countywatch update --no-llm
 
-      - name: Save durable crawler state
+      - name: Validate new candidates and atomically rebuild the dashboard
+        run: python -m countywatch.deep_rebuild run
+
+      - name: Save durable crawler and review state
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -77,7 +116,7 @@ jobs:
             gh release upload countywatch-state var/countywatch-state.sqlite3.gz --clobber
           else
             gh release create countywatch-state var/countywatch-state.sqlite3.gz \
-              --title "CountyWatch crawler state" \
+              --title "Siting Regulatory Radar state" \
               --notes "Machine-managed incremental state. Do not edit manually."
           fi
 
